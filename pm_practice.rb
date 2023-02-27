@@ -1,7 +1,4 @@
 class PmPractice
-    def initialize
-
-    end
 
     def generate_num
         res = rand(20)
@@ -36,24 +33,28 @@ class PmPractice
         x = generate_num
         y = generate_num
         ans = 0
-        if rand(2) == 0
-            output(x,y,0)
+        type = rand(2)
+        if type == 0
             ans = x+y
         else
-            output(x,y,1)
             ans = x-y
         end
 
-        if ans == gets.chomp.to_i
-            puts "Correct"
-        else 
-            puts "Wrong"
+        ok = false
+        while ok == false do
+            output(x,y,type)
+            if ans == gets.chomp.to_i
+                puts "Correct"
+                ok = true
+            else 
+                puts "Wrong"
+            end
+            puts "\n"
         end
-        puts "\n"
     end
 
     def run
-        print "問題数を入力してください(入力後タイマーがスタートします): "
+        print "問題数を入力してください(入力後時間計測を開始します): "
         prob_count = gets.chomp.to_i
         start_time = Time.now
         while prob_count > 0
